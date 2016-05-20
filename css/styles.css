@@ -20,18 +20,10 @@
   left: 0;
   right: 0; }
 
-.search .hits-hit {
-  text-align: center; }
+.search__results th {
+  font-family: Arial;
+}
 
-.search .hits-hit a {
-  text-decoration: none; }
-
-.search .hits-hit__poster {
-  max-width: 100px;
-  max-height: 140px;
-  display: inline-block; }
-
-.search .hits-hit__title {
-  font-size: 12px;
-  text-align: center;
-  margin-top: 5px; }
+.search__results td {
+  font-family: Arial;
+}
