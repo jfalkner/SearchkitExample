@@ -8,7 +8,8 @@ python -m SimpleHTTPServer
 
 Browse to [localhost:8000](http://localhost:8000/) to see the app.
 
-![Example screenhost of the rendered web page](screenshot.png)
+![Screenshot of the rendered web page](screenshot.png)
+![Screenshot of filtered search](screenshot_filter.png)
 
 See the code for all the components.
 
