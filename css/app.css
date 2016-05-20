@@ -35,21 +35,3 @@
   font-size: 12px;
   text-align: center;
   margin-top: 5px; }
-
-.sk-table tr td:nth-child(4) {
-  /* this will go to the 2nd column of a table directly */
-  max-width: 150px;
-  min-width: 150px;
-  padding-left: 8px;
-  padding-right: 3px; }
-
-#container {
-  display: table; }
-
-#row {
-  display: table-row; }
-
-#left, #right, #middle, #cell {
-  display: table-cell; }
-
-/*# sourceMappingURL=app.css.map */
