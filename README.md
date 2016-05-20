@@ -8,6 +8,8 @@ python -m SimpleHTTPServer
 
 Browse to [localhost:8000](http://localhost:8000/) to see the app.
 
+![Example screenhost of the rendered web page](screenshot.png)
+
 See the code for all the components.
 
 1. [`index.hml`](index.html) is plain HTML page that'll be populated by ReactJS via `js/subreadset.js`
