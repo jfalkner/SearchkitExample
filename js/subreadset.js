@@ -1,7 +1,5 @@
 // search using the index
-const sk = new Searchkit.SearchkitManager(Window.App.host + "lims_subreadsets_v2/lims_subreadset_v2/", {
-
-})
+const sk = new Searchkit.SearchkitManager(Window.App.host + "lims_subreadsets_v2/lims_subreadset_v2/")
 
 // import Searchkit ReactJS components used by this page
 const Hits = Searchkit.Hits
