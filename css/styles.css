@@ -34,6 +34,7 @@
 
 .search__results td {
   font-family: Arial;
+  white-space: nowrap;
 }
 
 .search__results td a {
