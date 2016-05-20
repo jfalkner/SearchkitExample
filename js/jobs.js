@@ -1,7 +1,6 @@
 // search using the index
-const sk = new Searchkit.SearchkitManager(Window.App.host + "lims_subreadsets_v2/lims_subreadset_v2/")
+const sk = new Searchkit.SearchkitManager(Window.App.host + "smrtlink_analysis_jobs_v1/smrtlink_analysis_job/")
 
-// import Searchkit ReactJS components used by this page
 const Hits = Searchkit.Hits
 const NoHits = Searchkit.NoHits
 const Pagination = Searchkit.Pagination
@@ -9,8 +8,8 @@ const Pagination = Searchkit.Pagination
 // utility code for pretty-printing
 const formatDate = Window.App.formatDate
 
-// renders a table with a row per search results (aka "hit")
-class SubreadsetTable extends React.Component {
+
+class JobTable extends React.Component {
 
     render(){
         const { hits } = this.props
@@ -21,31 +20,29 @@ class SubreadsetTable extends React.Component {
             <thead>
                 <tr>
                     <th>UUID</th>
-                    <th>Jobs</th>
-                    <th>Runcode</th>
-                    <th>Created At</th>
-                    <th>Path</th>
+                    <th>Name</th>
+                    <th>Created</th>
+                    <th>Updated</th>
                 </tr>
             </thead>
             <tbody>
             { hits.map(hit => {
                 return (
                 <tr key={hit._id}>
-                    <td>{hit._source.uuid}</td>
-                    <td><a href={"jobs.html?q=" + hit._source.uuid} title="Click to see jobs">?</a></td>
-                    <td>{hit._source.runcode}</td>
+                    <td>{hit._source.job_uuid}</td>
+                    <td>{hit._source.name}</td>
                     <td>{formatDate(hit._source.created_at)}</td>
-                    <td><a href="{hit._source.path}" title={hit._source.path}>...</a></td>
+                    <td>{formatDate(hit._source.updated_at)}</td>
                 </tr>
             )})}
             </tbody>
             </table>
             </div>
-    )}
+    )
+    }
 }
 
-// makes the main div with a search box and display for hits, nohits and pagination
-class SubreadsetSearch extends React.Component {
+class JobSearch extends React.Component {
     render() {
         const SearchkitProvider = Searchkit.SearchkitProvider;
         const Searchbox = Searchkit.SearchBox;
@@ -54,15 +51,15 @@ class SubreadsetSearch extends React.Component {
             <SearchkitProvider searchkit={sk}>
             <div className="search">
             <div className="search__query">
-            <Searchbox searchOnChange={true} prefixQueryFields={["uuid^1"]} />
+            <Searchbox searchOnChange={true} prefixQueryFields={["job_uuid^1"]} />
             </div>
             <div className="search__results">
-            <Hits hitsPerPage={10} sourceFilter={["uuid", "runcode", "created_at", "path"]} listComponent={SubreadsetTable}/>
+            <Hits hitsPerPage={10} sourceFilter={["job_uuid", "name", "created_at", "updated_at"]} listComponent={JobTable}/>
             <NoHits translations={{
             "NoHits.NoResultsFound":"No matches found for {query}",
                 "NoHits.DidYouMean":"Search for {suggestion}",
                 "NoHits.SearchWithoutFilters":"Search for {query} without filters"
-        }} suggestionsField="uuid"/>
+        }} suggestionsField="job_uuid"/>
             <Pagination showNumbers={true}/>
             </div>
             </div>
@@ -72,5 +69,4 @@ class SubreadsetSearch extends React.Component {
     }
 }
 
-// there is no composite view yet. just show subreadset search as the default
-ReactDOM.render(<SubreadsetSearch />, document.getElementById('app'));
+ReactDOM.render(<JobSearch />, document.getElementById('jobs'));
