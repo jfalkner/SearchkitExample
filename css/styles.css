@@ -7,6 +7,14 @@
   display: flex;
   border-bottom: 1px solid #ddd; }
 
+.search__query #examples a {
+  position: absolute;
+  right: 0px;
+  bottom: 3px;
+  font-family: Arial;
+  text-decoration: none;
+}
+
 .search .search-box {
   height: 40px;
   flex: 1; }
@@ -26,4 +34,13 @@
 
 .search__results td {
   font-family: Arial;
+}
+
+.search__results td a {
+  text-decoration: none;
+}
+
+.search #logo {
+  height: 36px;
+  padding: 2px;
 }
