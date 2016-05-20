@@ -132,3 +132,79 @@ curl -XPUT http://localhost:9200/lims_subreadset_v2/lims_subreadset_v2/684a00ae-
 
 Finally, aim SearchKit to [http://localhost:9200/lims_subreadset_v2/lims_subreadset_v2/](http://localhost:9200/lims_subreadset_v2/lims_subreadset_v2/_search). You can open the link in your browser to see the ES response. Note the link appends `_search`.
 
+You'll see something similar to the following. Note that ES a bunch of meta-data along with the JSON records. You can even have it return explanations regarding why matches and ordering is as it is. See the [search docs](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-uri-request.html).
+
+```json
+{
+  "took": 31,
+  "timed_out": false,
+  "_shards": {
+    "total": 5,
+    "successful": 5,
+    "failed": 0
+  },
+  "hits": {
+    "total": 3,
+    "max_score": 1,
+    "hits": [
+      {
+        "_index": "lims_subreadset_v2",
+        "_type": "lims_subreadset_v2",
+        "_id": "b8bb2bec-0b4b-4861-ae10-e5f92d5f5c89",
+        "_score": 1,
+        "_source": {
+          "uuid": "b8bb2bec-0b4b-4861-ae10-e5f92d5f5c89",
+          "ics_version": "3.1.0.177453",
+          "created_at": "2016-05-10T13:59:36.032825",
+          "runcode": "3110095-0020",
+          "inst_id": "54003",
+          "pa_version": "3.1.0-UNKNOWN",
+          "inst_name": "Inst54003",
+          "context": "m54003_160427_220553",
+          "exp_id": 3110095,
+          "path": "\/pbi\/collections\/311\/3110095\/r54003_20160427_220045\/1_A01\/m54003_160427_220553.subreadset.xml",
+          "sample_name": "A01"
+        }
+      },
+      {
+        "_index": "lims_subreadset_v2",
+        "_type": "lims_subreadset_v2",
+        "_id": "82c3bb5c-a0b1-4c58-84ac-4726595f8e3c",
+        "_score": 1,
+        "_source": {
+          "uuid": "82c3bb5c-a0b1-4c58-84ac-4726595f8e3c",
+          "ics_version": "",
+          "created_at": "2015-12-15T13:44:12.904122",
+          "runcode": "3120032-0002",
+          "inst_id": "60001",
+          "pa_version": "",
+          "inst_name": "Inst60001",
+          "context": "m54009_151204_224517",
+          "exp_id": 3120032,
+          "path": "\/pbi\/collections\/312\/3120032\/r54009_20151204_224507\/1_A01\/m54009_151204_224517.subreadset.xml",
+          "sample_name": "SamplePlate-1-A-1"
+        }
+      },
+      {
+        "_index": "lims_subreadset_v2",
+        "_type": "lims_subreadset_v2",
+        "_id": "684a00ae-954f-4392-8864-d38aa5fb6b26",
+        "_score": 1,
+        "_source": {
+          "uuid": "684a00ae-954f-4392-8864-d38aa5fb6b26",
+          "ics_version": "",
+          "created_at": "2016-01-15T09:22:08.243273",
+          "runcode": "3120032-0065",
+          "inst_id": "60001",
+          "pa_version": "",
+          "inst_name": "Inst60001",
+          "context": "m54009_160115_171035",
+          "exp_id": 3120032,
+          "path": "\/pbi\/collections\/312\/3120032\/r54009_20160115_171025\/1_A01\/m54009_160115_171035.subreadset.xml",
+          "sample_name": "SamplePlate-1-A-1"
+        }
+      }
+    ]
+  }
+}
+```
