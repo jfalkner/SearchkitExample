@@ -6,11 +6,8 @@ Window.App = {
 // extend this for specific indexes. e.g.
 //const host = "http://localhost:9200/lims_subreadset_v2/lims_subreadset_v2/"
 
-// local dev host. see Readme.md
-//const host = "http://login14-biofx01:9200/"
-
-
-Window.App.formatDate = function formatDate(val) {
+// pretty-print formatter for dates. derived from https://gist.github.com/akb/1187817
+Window.App.formatDate = (val) => {
 
     return (function () {
         return ['Jan.', 'Feb.', 'Mar.',
@@ -25,5 +22,3 @@ Window.App.formatDate = function formatDate(val) {
             this.getHours() + ":" + ("0" + this.getMinutes()).slice(-2);
     }).call(new Date(val))
 }
-
-console.log("Here")
