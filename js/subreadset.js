@@ -53,25 +53,25 @@ class SubreadsetSearch extends React.Component {
     render() {
         const SearchkitProvider = Searchkit.SearchkitProvider;
         const Searchbox = Searchkit.SearchBox;
-        return (<div>
-
-            <SearchkitProvider searchkit={sk}>
-            <div className="search">
-            <div className="search__query">
-            <Searchbox searchOnChange={true} prefixQueryFields={["uuid^1"]} />
-            </div>
-            <div className="search__results">
-            <Hits hitsPerPage={10} sourceFilter={["uuid", "runcode", "created_at", "inst_id", "inst_name", "path", "context"]} listComponent={SubreadsetTable}/>
-            <NoHits translations={{
-            "NoHits.NoResultsFound":"No matches found for {query}",
-                "NoHits.DidYouMean":"Search for {suggestion}",
-                "NoHits.SearchWithoutFilters":"Search for {query} without filters"
-        }} suggestionsField="uuid"/>
-            <Pagination showNumbers={true}/>
-            </div>
-            </div>
-            </SearchkitProvider>
-
+        return (
+            <div>
+                <SearchkitProvider searchkit={sk}>
+                    <div className="search">
+                        <div className="search__query">
+                            <div>Logo:</div>
+                            <Searchbox searchOnChange={true} prefixQueryFields={["uuid^1"]} />
+                        </div>
+                        <div className="search__results">
+                            <Hits hitsPerPage={10} sourceFilter={["uuid", "runcode", "created_at", "inst_id", "inst_name", "path", "context"]} listComponent={SubreadsetTable}/>
+                            <NoHits translations={{
+                                "NoHits.NoResultsFound" : "No matches found for {query}",
+                                "NoHits.DidYouMean" : "Search for {suggestion}",
+                                "NoHits.SearchWithoutFilters" : "Search for {query} without filters"
+                            }} suggestionsField="uuid"/>
+                            <Pagination showNumbers={true}/>
+                        </div>
+                    </div>
+                </SearchkitProvider>
             </div>);
     }
 }
