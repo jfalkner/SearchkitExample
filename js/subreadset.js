@@ -20,19 +20,19 @@ class SubreadsetTable extends React.Component {
             <table className="sk-table sk-table-striped" style={{width: '100%', boxSizing: 'border-box'}}>
             <thead>
                 <tr>
-                <th></th>
-                <th>UUID</th>
-                <th>Runcode</th>
-                <th>Created At</th>
-                <th>Path</th>
+                    <th>UUID</th>
+                    <th>Jobs</th>
+                    <th>Runcode</th>
+                    <th>Created At</th>
+                    <th>Path</th>
                 </tr>
             </thead>
             <tbody>
             { hits.map(hit => {
                 return (
                 <tr key={hit._id}>
-                    <td style={{margin: 0, padding: 0, width: 40}}></td>
                     <td>{hit._source.uuid}</td>
+                    <td><a href={"jobs.html?q=" + hit._source.uuid} title="Click to see jobs">?</a></td>
                     <td>{hit._source.runcode}</td>
                     <td>{formatDate(hit._source.created_at)}</td>
                     <td><a href="{hit._source.path}" title={hit._source.path}>...</a></td>

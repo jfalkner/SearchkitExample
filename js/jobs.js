@@ -5,9 +5,11 @@ const Hits = Searchkit.Hits
 const NoHits = Searchkit.NoHits
 const Pagination = Searchkit.Pagination
 
+// utility code for pretty-printing
+const formatDate = Window.App.formatDate
+
 
 class JobTable extends React.Component {
-
 
     render(){
         const { hits } = this.props
@@ -17,7 +19,10 @@ class JobTable extends React.Component {
             <table className="sk-table sk-table-striped" style={{width: '100%', boxSizing: 'border-box'}}>
             <thead>
                 <tr>
-                <th>UUID</th>
+                    <th>UUID</th>
+                    <th>Name</th>
+                    <th>Created</th>
+                    <th>Updated</th>
                 </tr>
             </thead>
             <tbody>
@@ -25,6 +30,9 @@ class JobTable extends React.Component {
                 return (
                 <tr key={hit._id}>
                     <td>{hit._source.job_uuid}</td>
+                    <td>{hit._source.name}</td>
+                    <td>{formatDate(hit._source.created_at)}</td>
+                    <td>{formatDate(hit._source.updated_at)}</td>
                 </tr>
             )})}
             </tbody>
@@ -46,7 +54,7 @@ class JobSearch extends React.Component {
             <Searchbox searchOnChange={true} prefixQueryFields={["job_uuid^1"]} />
             </div>
             <div className="search__results">
-            <Hits hitsPerPage={10} sourceFilter={["job_uuid"]} listComponent={JobTable}/>
+            <Hits hitsPerPage={10} sourceFilter={["job_uuid", "name", "created_at", "updated_at"]} listComponent={JobTable}/>
             <NoHits translations={{
             "NoHits.NoResultsFound":"No matches found for {query}",
                 "NoHits.DidYouMean":"Search for {suggestion}",
