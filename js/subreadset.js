@@ -8,6 +8,7 @@ const Pagination = Searchkit.Pagination
 
 // utility code for pretty-printing
 const formatDate = Window.App.formatDate
+const naIfBlank = Window.App.naIfBlank
 
 // renders a table with a row per search results (aka "hit")
 class SubreadsetTable extends React.Component {
@@ -23,9 +24,12 @@ class SubreadsetTable extends React.Component {
                     <th>UUID</th>
                     <th>Runcode</th>
                     <th>Created</th>
-                    <th>Instrument (ID)</th>
+                    <th><a title="Instrument">Inst.</a></th>
+                    <th>Sample</th>
                     <th>Path</th>
                     <th>Context</th>
+                    <th>ICS</th>
+                    <th>CA</th>
                 </tr>
             </thead>
             <tbody>
@@ -35,9 +39,12 @@ class SubreadsetTable extends React.Component {
                     <td>{hit._source.uuid.substring(0, 5)}<super><a href={hit._source.uuid} title={hit._source.uuid}>*</a></super></td>
                     <td>{hit._source.runcode}</td>
                     <td>{formatDate(hit._source.created_at)}</td>
-                    <td>{hit._source.inst_name} ({hit._source.inst_id})</td>
+                    <td><a title={hit._source.inst_id}>{hit._source.inst_name}</a></td>
+                    <td>{hit._source.sample_name}</td>
                     <td><a href={hit._source.path} title={hit._source.path}>...</a></td>
                     <td>{hit._source.context}</td>
+                    <td>{naIfBlank(hit._source.ics_version)}</td>
+                    <td>{naIfBlank(hit._source.pa_version)}</td>
                 </tr>
             )})}
             </tbody>
@@ -61,7 +68,7 @@ class SubreadsetSearch extends React.Component {
                             <div id="examples"><a href="https://github.com/jfalkner/SearchkitExample/blob/master/README.md">?</a></div>
                         </div>
                         <div className="search__results">
-                            <Hits hitsPerPage={10} sourceFilter={["uuid", "runcode", "created_at", "inst_id", "inst_name", "path", "context"]} listComponent={SubreadsetTable}/>
+                            <Hits hitsPerPage={10} sourceFilter={["uuid", "runcode", "created_at", "inst_id", "inst_name", "path", "context", "sample_name", "pa_version", "ics_version"]} listComponent={SubreadsetTable}/>
                             <NoHits translations={{
                                 "NoHits.NoResultsFound" : "No matches found for {query}",
                                 "NoHits.DidYouMean" : "Search for {suggestion}",

@@ -22,3 +22,11 @@ Window.App.formatDate = (val) => {
             this.getHours() + ":" + ("0" + this.getMinutes()).slice(-2);
     }).call(new Date(val))
 }
+
+// pretty-print formatter for blank values
+Window.App.naIfBlank = (str) => {
+    if (!str || str.length === 0 || str.trim() == '' || typeof str == 'undefined' || !/[^\s]/.test(str) || /^\s*$/.test(str) || str.replace(/\s/g,"") === "") {
+        return 'N/A'
+    }
+    return str
+}
