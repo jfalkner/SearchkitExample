@@ -7,6 +7,14 @@
   display: flex;
   border-bottom: 1px solid #ddd; }
 
+.search__query #examples a {
+  position: absolute;
+  right: 0px;
+  bottom: 3px;
+  font-family: Arial;
+  text-decoration: none;
+}
+
 .search .search-box {
   height: 40px;
   flex: 1; }
@@ -20,18 +28,19 @@
   left: 0;
   right: 0; }
 
-.search .hits-hit {
-  text-align: center; }
+.search__results th {
+  font-family: Arial;
+}
 
-.search .hits-hit a {
-  text-decoration: none; }
+.search__results td {
+  font-family: Arial;
+}
 
-.search .hits-hit__poster {
-  max-width: 100px;
-  max-height: 140px;
-  display: inline-block; }
+.search__results td a {
+  text-decoration: none;
+}
 
-.search .hits-hit__title {
-  font-size: 12px;
-  text-align: center;
-  margin-top: 5px; }
+.search #logo {
+  height: 36px;
+  padding: 2px;
+}

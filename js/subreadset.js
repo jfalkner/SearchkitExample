@@ -20,7 +20,6 @@ class SubreadsetTable extends React.Component {
             <table className="sk-table sk-table-striped" style={{width: '100%', boxSizing: 'border-box'}}>
             <thead>
                 <tr>
-                    <th></th>
                     <th>UUID</th>
                     <th>Runcode</th>
                     <th>Created</th>
@@ -33,7 +32,6 @@ class SubreadsetTable extends React.Component {
             { hits.map(hit => {
                 return (
                 <tr key={hit._id}>
-                    <td style={{margin: 0, padding: 0, width: 40}}></td>
                     <td>{hit._source.uuid.substring(0, 5)}<super><a href={hit._source.uuid} title={hit._source.uuid}>*</a></super></td>
                     <td>{hit._source.runcode}</td>
                     <td>{formatDate(hit._source.created_at)}</td>
@@ -53,25 +51,26 @@ class SubreadsetSearch extends React.Component {
     render() {
         const SearchkitProvider = Searchkit.SearchkitProvider;
         const Searchbox = Searchkit.SearchBox;
-        return (<div>
-
-            <SearchkitProvider searchkit={sk}>
-            <div className="search">
-            <div className="search__query">
-            <Searchbox searchOnChange={true} prefixQueryFields={["uuid^1"]} />
-            </div>
-            <div className="search__results">
-            <Hits hitsPerPage={10} sourceFilter={["uuid", "runcode", "created_at", "inst_id", "inst_name", "path", "context"]} listComponent={SubreadsetTable}/>
-            <NoHits translations={{
-            "NoHits.NoResultsFound":"No matches found for {query}",
-                "NoHits.DidYouMean":"Search for {suggestion}",
-                "NoHits.SearchWithoutFilters":"Search for {query} without filters"
-        }} suggestionsField="uuid"/>
-            <Pagination showNumbers={true}/>
-            </div>
-            </div>
-            </SearchkitProvider>
-
+        return (
+            <div>
+                <SearchkitProvider searchkit={sk}>
+                    <div className="search">
+                        <div className="search__query">
+                            <div><img id="logo" src="images/lims_logo.svg"/></div>
+                            <Searchbox searchOnChange={true} prefixQueryFields={["uuid^1"]} />
+                            <div id="examples"><a href="https://github.com/jfalkner/SearchkitExample/blob/master/README.md">?</a></div>
+                        </div>
+                        <div className="search__results">
+                            <Hits hitsPerPage={10} sourceFilter={["uuid", "runcode", "created_at", "inst_id", "inst_name", "path", "context"]} listComponent={SubreadsetTable}/>
+                            <NoHits translations={{
+                                "NoHits.NoResultsFound" : "No matches found for {query}",
+                                "NoHits.DidYouMean" : "Search for {suggestion}",
+                                "NoHits.SearchWithoutFilters" : "Search for {query} without filters"
+                            }} suggestionsField="uuid"/>
+                            <Pagination showNumbers={true}/>
+                        </div>
+                    </div>
+                </SearchkitProvider>
             </div>);
     }
 }
