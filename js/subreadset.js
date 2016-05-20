@@ -20,11 +20,13 @@ class SubreadsetTable extends React.Component {
             <table className="sk-table sk-table-striped" style={{width: '100%', boxSizing: 'border-box'}}>
             <thead>
                 <tr>
-                <th></th>
-                <th>UUID</th>
-                <th>Runcode</th>
-                <th>Created At</th>
-                <th>Path</th>
+                    <th></th>
+                    <th>UUID</th>
+                    <th>Runcode</th>
+                    <th>Created</th>
+                    <th>Instrument (ID)</th>
+                    <th>Path</th>
+                    <th>Context</th>
                 </tr>
             </thead>
             <tbody>
@@ -35,7 +37,9 @@ class SubreadsetTable extends React.Component {
                     <td>{hit._source.uuid}</td>
                     <td>{hit._source.runcode}</td>
                     <td>{formatDate(hit._source.created_at)}</td>
-                    <td><a href="{hit._source.path}" title={hit._source.path}>...</a></td>
+                    <td>{hit._source.inst_name} ({hit._source.inst_id})</td>
+                    <td><a href={hit._source.path} title={hit._source.path}>...</a></td>
+                    <td>{hit._source.context}</td>
                 </tr>
             )})}
             </tbody>
@@ -57,7 +61,7 @@ class SubreadsetSearch extends React.Component {
             <Searchbox searchOnChange={true} prefixQueryFields={["uuid^1"]} />
             </div>
             <div className="search__results">
-            <Hits hitsPerPage={10} sourceFilter={["uuid", "runcode", "created_at", "path"]} listComponent={SubreadsetTable}/>
+            <Hits hitsPerPage={10} sourceFilter={["uuid", "runcode", "created_at", "inst_id", "inst_name", "path", "context"]} listComponent={SubreadsetTable}/>
             <NoHits translations={{
             "NoHits.NoResultsFound":"No matches found for {query}",
                 "NoHits.DidYouMean":"Search for {suggestion}",
