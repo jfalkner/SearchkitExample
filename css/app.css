@@ -1,0 +1,55 @@
+.search__query {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 41px;
+  display: flex;
+  border-bottom: 1px solid #ddd; }
+
+.search .search-box {
+  height: 40px;
+  flex: 1; }
+
+.search .search-box__loader {
+  display: none; }
+
+.search__results {
+  position: absolute;
+  top: 41px;
+  left: 0;
+  right: 0; }
+
+.search .hits-hit {
+  text-align: center; }
+
+.search .hits-hit a {
+  text-decoration: none; }
+
+.search .hits-hit__poster {
+  max-width: 100px;
+  max-height: 140px;
+  display: inline-block; }
+
+.search .hits-hit__title {
+  font-size: 12px;
+  text-align: center;
+  margin-top: 5px; }
+
+.sk-table tr td:nth-child(4) {
+  /* this will go to the 2nd column of a table directly */
+  max-width: 150px;
+  min-width: 150px;
+  padding-left: 8px;
+  padding-right: 3px; }
+
+#container {
+  display: table; }
+
+#row {
+  display: table-row; }
+
+#left, #right, #middle, #cell {
+  display: table-cell; }
+
+/*# sourceMappingURL=app.css.map */
