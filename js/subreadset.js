@@ -64,7 +64,7 @@ class SubreadsetSearch extends React.Component {
                     <div className="search">
                         <div className="search__query">
                             <div><img id="logo" src="images/lims_logo.svg"/></div>
-                            <Searchbox searchOnChange={true} prefixQueryFields={["uuid^1"]} />
+                            <Searchbox searchOnChange={true} prefixQueryFields={["runcode^3", "uuid^1"]} />
                             <div id="examples"><a href="https://github.com/jfalkner/SearchkitExample/blob/master/README.md">?</a></div>
                         </div>
                         <div className="search__results">
