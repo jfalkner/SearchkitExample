@@ -41,7 +41,7 @@ class SubreadsetTable extends React.Component {
                     <td>{formatDate(hit._source.created_at)}</td>
                     <td><a title={hit._source.inst_id}>{hit._source.inst_name}</a></td>
                     <td>{hit._source.sample_name}</td>
-                    <td><a href={hit._source.path} title={hit._source.path}>...</a></td>
+                    <td><a href={"file://" + hit._source.path} title={hit._source.path}>...</a></td>
                     <td>{hit._source.context}</td>
                     <td>{naIfBlank(hit._source.ics_version)}</td>
                     <td>{naIfBlank(hit._source.pa_version)}</td>
