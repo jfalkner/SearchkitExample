@@ -36,7 +36,7 @@ class SubreadsetTable extends React.Component {
             { hits.map(hit => {
                 return (
                 <tr key={hit._id}>
-                    <td>{hit._source.uuid.substring(0, 5)}<super><a href={hit._source.uuid} title={hit._source.uuid}>*</a></super></td>
+                    <td>{hit._source.uuid.substring(0, 5)}<super><a href={"?q=\"" + hit._source.uuid + "\""} title={hit._source.uuid}>*</a></super></td>
                     <td>{hit._source.runcode}</td>
                     <td>{formatDate(hit._source.created_at)}</td>
                     <td><a title={hit._source.inst_id}>{hit._source.inst_name}</a></td>
