@@ -58,6 +58,7 @@ class SubreadsetSearch extends React.Component {
     render() {
         const SearchkitProvider = Searchkit.SearchkitProvider;
         const Searchbox = Searchkit.SearchBox;
+        const SortingSelector = Searchkit.SortingSelector;
         return (
             <div>
                 <SearchkitProvider searchkit={sk}>
@@ -65,6 +66,10 @@ class SubreadsetSearch extends React.Component {
                         <div className="search__query">
                             <div><img id="logo" src="images/lims_logo.svg"/></div>
                             <Searchbox searchOnChange={true} prefixQueryFields={["runcode^3", "uuid^1"]} />
+                            <SortingSelector options={[
+                              {label:"Recent", field:"created_at", order:"desc", defaultOption:true},
+                              {label:"Relevance", field:"_score", order:"desc"}
+                            ]} />
                             <div id="examples"><a href="https://github.com/jfalkner/SearchkitExample/blob/master/README.md">?</a></div>
                         </div>
                         <div className="search__results">
